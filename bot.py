@@ -40,8 +40,9 @@ async def hent(msg : types.Message):
 
 @dp.message_handler(commands='qr')
 async def test(msg : types.Message):
-    make_qr(msg.text.split(' ', 1)[1])
-    await msg.reply_photo(open('qr.png', 'rb'), caption='да пошел ты нахуй')
+    split = msg.text.split(' ', 1)[1]
+    make_qr(split)
+    await msg.reply_photo(open('qr.png', 'rb'), caption=split)
 
 if __name__ == '__main__':
     executor.start_polling(dp,skip_updates=True, on_startup=on_startup)
